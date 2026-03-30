@@ -17,7 +17,7 @@ Fitur yang terdapat pada website SkillSync:
 - Session Login
 - Cookies (Remember Me)
 - Session Timeout (Auto Logout)
-- Koneksi Database MySQL
+- Koneksi Database 
 
 ---
 
@@ -35,3 +35,25 @@ Contoh penggunaan session pada kode:
 session_start();
 $_SESSION['id_user'] = $data['id_user'];
 $_SESSION['nama'] = $data['nama'];
+```
+## Implementasi Cookies
+Cookies digunakan pada fitur **Remember Me** saat login. 
+Jika pengguna mencentang Remember Me, maka email pengguna akan disimpan pada browser selama beberapa waktu sehingga pengguna tidak perlu menginput email kembali saat login.
+
+Implementasi cookies terdapat pada file:
+- login.php
+
+Contoh kode implementasi cookies pada login.php:
+```php
+if (isset($_POST['remember'])) {
+    setcookie("email_user", $email, time() + (86400 * 7), "/");
+}
+```
+## Perbedaan Session dan Cookies
+
+| Session | Cookies |
+|--------|--------|
+| Disimpan di Server | Disimpan di Browser |
+| Untuk menyimpan data login | Untuk remember me |
+| Lebih aman | Kurang aman |
+| Mengatur hak akses | Menyimpan data sementara |
