@@ -1,40 +1,37 @@
-SKILLSYNC
-Skillsync merupakan platform edukasi pemetaan kompetensi yang menganalisis kesenjangan skill yang dimiliki dengan kebutuhan industri
-SKILLSYNC
+# SKILLSYNC
+Skillsynce adalah platform pemetaan dan sinkronisasi kompetensi mahasiswa dengan kebutuhan industri. Jadi semua fitur berpusat pada pengukuran skill, analisis kesenjangan, dan peningkatan kompetensi.
 
- Deskripsi
-SkillSync merupakan platform edukasi pemetaan kompetensi yang menganalisis kesenjangan skill yang dimiliki mahasiswa dengan kebutuhan industri. Sistem ini membantu pengguna mengetahui skill yang dimiliki, skill yang dibutuhkan, serta memberikan gambaran career path yang sesuai.
+## Deskripsi
+SkillSync merupakan platform edukasi yang digunakan untuk membantu pengguna dalam memetakan kompetensi, skill, dan career path. 
 
-Pada pengembangan sistem ini, ditambahkan fitur autentikasi login menggunakan Session dan Cookies untuk mengelola data pengguna dan meningkatkan keamanan serta kenyamanan pengguna.
+Aplikasi ini dibuat sebagai bagian dari studi kasus pada mata kuliah Pemrograman Web, Manajemen Proyek Sistem Informasi (MPSI), dan E-Business, serta diimplementasikan dalam bentuk website.
+
+Pada tugas ini, sistem SkillSync dikembangkan dengan menambahkan fitur Session dan Cookies untuk mengelola proses login pengguna.
 
 ---
 
- Fitur Sistem
-- Login
+## Fitur Sistem
+Fitur yang terdapat pada website SkillSync:
+- Login User
 - Logout
 - Session Login
-- Session Timeout (Logout otomatis)
-- Remember Me (Cookies)
-- Dashboard Skill
-- Career Gap Scanner
+- Cookies (Remember Me)
+- Session Timeout (Auto Logout)
+- Koneksi Database MySQL
 
 ---
 
- Implementasi Session
-Session digunakan untuk:
-- Menyimpan data pengguna saat login
-- Menjaga status login pengguna
-- Menampilkan nama pengguna pada halaman utama
-- Mengatur session timeout (logout otomatis jika tidak aktif)
-- Menghapus session saat logout
+## Implementasi Session
+Session digunakan untuk menyimpan data login pengguna di server sehingga pengguna tetap dalam kondisi login selama session masih aktif.
 
-Session diimplementasikan pada file:
-- `login.php`
-- `index.php`
-- `logout.php`
+Session digunakan pada:
+- Menyimpan ID User
+- Menyimpan Nama User
+- Menjaga status login
+- Session timeout (logout otomatis)
 
-Contoh kode session:
+Contoh penggunaan session pada kode:
 ```php
+session_start();
 $_SESSION['id_user'] = $data['id_user'];
 $_SESSION['nama'] = $data['nama'];
-$_SESSION['expired'] = time() + 30;
