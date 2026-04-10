@@ -1,24 +1,32 @@
 <?php
 session_start();
 
-// cek expired aja (opsional)
-if (isset($_SESSION['expired']) && time() > $_SESSION['expired']) {
-    session_unset();
-    session_destroy();
+// kalau sudah login, redirect ke dashboard sesuai role
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'admin') {
+        header("Location: dashboard_admin.php");
+        exit;
+    } elseif ($_SESSION['role'] == 'mahasiswa') {
+        header("Location: dashboard_mahasiswa.php");
+        exit;
+    } elseif ($_SESSION['role'] == 'perusahaan') {
+        header("Location: dashboard_perusahaan.php");
+        exit;
+    }
 }
 
-
-// cek waktu
+// cek waktu session
 if (isset($_SESSION['expired']) && time() > $_SESSION['expired']) {
     session_unset();
     session_destroy();
-    header("Location: login.html");
+    header("Location: login_form.php");
     exit();
 }
 
 // reset waktu
-$_SESSION['expired'] = time() + 30;
+$_SESSION['expired'] = time() + 3600;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,126 +38,105 @@ $_SESSION['expired'] = time() + 30;
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-
 <!-- NAVBAR -->
-<nav class="bg-white shadow-md fixed w-full z-10">
+<nav class="bg-white shadow-sm fixed w-full z-10">
     <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-        <h1 class="text-2xl font-bold text-blue-600">SkillSync</h1>
+        <div class="flex items-center gap-2">
+            <div class="w-9 h-9 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold">
+                M
+            </div>
+            <h1 class="text-lg font-semibold text-blue-500">SkillSync</h1>
+        </div>
 
-        <div class="space-x-6 hidden md:flex items-center">
-            <a href="#fitur" class="hover:text-blue-600">Fitur</a>
-            <a href="#tentang" class="hover:text-blue-600">Tentang</a>
-            <a href="#kontak" class="hover:text-blue-600">Kontak</a>
-
-            <?php if (isset($_SESSION['nama'])): ?>
-                <span class="ml-4 font-medium">Halo, <?php echo $_SESSION['nama']; ?></span>
-                <a href="logout.php" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Logout</a>
-            <?php else: ?>
-                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Login</a>
-            <?php endif; ?>
+        <div class="space-x-3">
+            <a href="login_form.php" class="border border-blue-400 text-blue-500 px-4 py-1 rounded-lg hover:bg-blue-50">
+                Login
+            </a>
+            <a href="pilih_role.php" class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600">
+                Daftar
+            </a>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center pt-32 pb-24">
-    <h1 class="text-5xl font-extrabold mb-4">Upgrade Skillmu 🚀</h1>
-    <p class="text-lg mb-8">Kelola, pelajari, dan kembangkan skill dengan cara yang lebih terarah</p>
-
-    <?php if (!isset($_SESSION['nama'])): ?>
-        <a href="login.html" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold shadow hover:scale-105 transition">
-            Mulai Sekarang
-        </a>
-    <?php else: ?>
-        <p class="text-green-200 text-lg font-semibold">Selamat datang kembali 🎉</p>
-    <?php endif; ?>
+<section class="bg-[#eef5f9] text-center pt-32 pb-16">
+    <h1 class="text-4xl font-semibold text-blue-700 mb-3">
+        Selamat Datang di SkillSync
+    </h1>
+    <p class="text-blue-600">
+        Platform pembelajaran online untuk meningkatkan skill Anda
+    </p>
 </section>
 
 <!-- FITUR -->
-<section id="fitur" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto text-center px-6">
-        <h2 class="text-3xl font-bold mb-4">Fitur Utama SkillMap Kampus</h2>
-        <p class="text-gray-600 mb-12 max-w-2xl mx-auto">
-            Platform ini berfokus pada pemetaan kompetensi mahasiswa dan analisis kesenjangan skill terhadap kebutuhan industri.
-        </p>
+<section class="bg-[#eef5f9] pb-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+        <h2 class="text-2xl font-semibold text-blue-700 mb-12">
+            Fitur Unggulan
+        </h2>
 
         <div class="grid md:grid-cols-3 gap-8">
-    
-    <!-- PETA KOMPETENSI -->
-    <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition text-left">
-        <div class="mb-4 text-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-6h13M9 7h13M5 7h.01M5 17h.01M3 12h18" />
-            </svg>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Peta Kompetensi Mahasiswa</h3>
-        <p class="text-gray-600">
-            Menampilkan skill berdasarkan program studi lengkap dengan tingkat penguasaan.
-        </p>
-    </div>
 
-    <!-- GAP SCANNER (PALING MENONJOL) -->
-    <div class="bg-blue-600 text-white p-8 rounded-2xl shadow-2xl scale-105 hover:scale-110 transition text-left">
-        <div class="mb-4 text-white drop-shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Career Gap Scanner</h3>
-        <p class="text-blue-100">
-            Menganalisis gap antara skill mahasiswa dan kebutuhan industri serta memberikan rekomendasi.
-        </p>
-    </div>
+            <?php
+            $fitur = [
+                ["user","Login & Register","Daftar dan masuk ke akun Anda untuk mengakses semua fitur platform"],
+                ["chart","Peta Kompetensi Mahasiswa","Dashboard interaktif untuk memvisualisasikan skill dan kompetensi Anda"],
+                ["award","Career Gap Scanner","Analisis kesenjangan antara skill Anda dengan kebutuhan karir impian"],
+                ["book","Upload Proyek & Validasi Skill","Unggah portofolio proyek dan dapatkan validasi skill dari sistem"],
+                ["calendar","Tes Diagnostik Awal","Ikuti tes untuk mengetahui level kemampuan dan skill Anda saat ini"],
+                ["chat","Rekomendasi Materi Pembelajaran","Dapatkan rekomendasi materi belajar yang sesuai dengan kebutuhan Anda"]
+            ];
 
-    <!-- RAPOR -->
-    <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition text-left">
-        <div class="mb-4 text-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M9 17V9m4 8v-4m4 4v-6" />
-            </svg>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Rapor Kompetensi</h3>
-        <p class="text-gray-600">
-            Penilaian berbasis proyek yang meningkatkan level skill secara nyata.
-        </p>
-    </div>
+            function icon($type) {
+                switch($type) {
+                    case "user":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-1a4 4 0 00-3-3.87M9 20H4v-1a4 4 0 013-3.87m10-6a4 4 0 11-8 0 4 4 0 018 0z"/></svg>';
+                    case "chart":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg>';
+                    case "award":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>';
+                    case "book":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v15H6.5A2.5 2.5 0 004 19.5V4.5A2.5 2.5 0 016.5 2z"/></svg>';
+                    case "calendar":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
+                    case "chat":
+                        return '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 01-4 4H7l-4 4V5a4 4 0 014-4h10a4 4 0 014 4z"/></svg>';
+                }
+            }
 
-</div>
+            foreach ($fitur as $item) :
+            ?>
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                    
+                    <div class="w-16 h-16 mx-auto mb-5 bg-blue-100 rounded-full flex items-center justify-center">
+                        <?php echo icon($item[0]); ?>
+                    </div>
 
-        </div>
+                    <h3 class="font-semibold text-blue-700 mb-2 text-lg">
+                        <?php echo $item[1]; ?>
+                    </h3>
 
-        <!-- SUB FITUR -->
-        <div class="mt-16">
-            <h3 class="text-xl font-semibold mb-4">Fitur Pendukung</h3>
-            <p class="text-gray-600">
-                Upload proyek, validasi skill, tes diagnostik, dan rekomendasi pembelajaran.
-            </p>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        <?php echo $item[2]; ?>
+                    </p>
+
+                </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
 </section>
 
-<!-- TENTANG -->
-<section id="tentang" class="bg-white py-20">
-    <div class="max-w-4xl mx-auto text-center px-6">
-        <h2 class="text-3xl font-bold mb-6">Tentang SkillSync</h2>
-        <p class="text-gray-600 leading-relaxed">
-            SkillSync membantu kamu mengelola dan mengembangkan skill agar lebih siap menghadapi dunia kerja.
-            Platform ini dirancang untuk memberikan pengalaman belajar yang terarah dan efektif.
-        </p>
-    </div>
-</section>
-
-<!-- KONTAK -->
-<section id="kontak" class="py-20 text-center">
-    <h2 class="text-3xl font-bold mb-6">Kontak</h2>
-    <p class="text-gray-600">Email: skillsync@gmail.com</p>
-    <p class="text-gray-600">Instagram: @skillsync.id</p>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-white text-center p-6">
-    <p>© 2026 SkillSync. All rights reserved.</p>
+<!-- FOOTER (SESUAI GAMBAR) -->
+<footer class="bg-white text-center py-10 text-blue-400 border-t">
+    <h3 class="text-lg font-semibold mb-3">Hubungi Kami</h3>
+    <p>Email: info@skillsync.com</p>
+    <p>Telepon: +62 812-3456-7890</p>
+    <p class="mt-6 text-sm text-blue-300">
+        © 2026 SkillSync. Platform pembelajaran untuk masa depan Anda.
+    </p>
 </footer>
-
 </body>
 </html>
