@@ -17,7 +17,7 @@ if ($password !== $konfirmasi) {
 }
 
 // hash password
-$password_hash = password_hash($password, PASSWORD_DEFAULT);
+$password_hash = $password;
 
 // cek email
 $cek = mysqli_query($koneksi, "SELECT * FROM users WHERE email='$email'");

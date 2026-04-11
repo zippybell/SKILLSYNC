@@ -43,7 +43,7 @@ $_SESSION['expired'] = time() + 3600;
     <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
         <div class="flex items-center gap-2">
             <div class="w-9 h-9 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold">
-                M
+                S
             </div>
             <h1 class="text-lg font-semibold text-blue-500">SkillSync</h1>
         </div>

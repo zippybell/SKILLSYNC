@@ -12,10 +12,10 @@ $data = mysqli_fetch_assoc($query);
 if ($data) {
 
     // cek password
-    if (password_verify($password, $data['password'])) {
+    if ($password == $data['password']) {
 
         // SESSION
-        $_SESSION['id_user'] = $data['id_user'];
+        $_SESSION['user_id'] = $data['id_user'];
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['role'] = $data['role'];
         $_SESSION['expired'] = time() + 3600;
@@ -31,7 +31,7 @@ if ($data) {
         } elseif ($data['role'] == 'mahasiswa') {
             header("Location: dashboard_mahasiswa.php");
         } elseif ($data['role'] == 'mentor') {
-            header("Location: dashboard_perusahaan.php");
+            header("Location: dashboard_mentor.php");
         } else {
             echo "Role tidak dikenali!";
         }
