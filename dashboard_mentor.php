@@ -1,12 +1,20 @@
 <?php
 session_start();
-include 'koneksi.php';
 
 // cek login
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login_form.php");
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
     exit;
 }
+
+// cek expired
+if(time() > $_SESSION['expired']){
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+include 'koneksi.php';
 
 $user_id = $_SESSION['user_id'];
 

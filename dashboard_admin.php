@@ -1,8 +1,19 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'admin') {
-    header("Location: login_form.php");
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+    exit;
+}
+
+if(time() > $_SESSION['expired']){
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    header("Location: login.php");
     exit;
 }
 ?>
