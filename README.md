@@ -23,7 +23,7 @@ Aplikasi ini dibuat sebagai bagian dari studi kasus pada mata kuliah Pemrograman
 
 SkillSync adalah aplikasi berbasis web yang dirancang untuk membantu mahasiswa dalam memetakan kompetensi yang dimiliki serta memberikan gambaran awal mengenai arah pengembangan karier yang sesuai. Aplikasi ini memungkinkan pengguna untuk mengelola data keterampilan dan mendapatkan informasi yang relevan dengan potensi karier mereka.
 
-##Tujuan Aplikasi
+## Tujuan Aplikasi
 - Membantu mahasiswa mengenali kompetensi yang dimiliki.
 - Menyediakan peta kompetensi sebagai dasar pengembangan karier.
 - Mendukung proses perencanaan karier yang lebih terarah.
