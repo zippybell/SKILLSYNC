@@ -30,8 +30,16 @@ SkillSync adalah aplikasi berbasis web yang dirancang untuk membantu mahasiswa d
 
 ---
 
-## Fitur Utama
+## Fitur Skillsync Keseluruan 
+1. Registrasi dan pengelolaan akun pengguna
+2. Pelaksanaan tes diagnostik awal untuk mengidentifikasi kemampuan pengguna
+3. Pemetaan kompetensi berdasarkan hasil asesmen
+4. Analisis kesenjangan keterampilan (career gap)
+5. Pemberian rekomendasi materi pembelajaran
+6. Validasi hasil asesmen oleh mentor
+7. Penyimpanan portofolio melalui fitur upload project
 
+   ---
 1. Autentikasi Pengguna
   - Login dan logout pengguna.
   - Manajemen sesi untuk keamanan akses.
