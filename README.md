@@ -12,9 +12,9 @@ Aplikasi ini dibuat sebagai bagian dari studi kasus pada mata kuliah Pemrograman
 ---
 
 ## Pembagian Tugas
-1. SISILIA ROUDHOTUN NABILA:
-2. ARGA DWI PRASTYO:     
-3. BALQIS SAFIRA:               
+1. SISILIA ROUDHOTUN NABILA: Pelaksanaan tes skill kompetensi kemampuan pengguna, Menampilkan hasil asesmen
+2. ARGA DWI PRASTYO: CRUD Soal oleh Admin, CRUD Upload Materi Mentor      
+3. BALQIS SAFIRA: Registrasi dan pengelolaan akun pengguna, 2 Fitur transaksi      
 
 
 ---
