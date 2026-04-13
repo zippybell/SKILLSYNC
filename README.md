@@ -5,55 +5,55 @@ Skillsynce adalah platform pemetaan dan sinkronisasi kompetensi mahasiswa dengan
 SkillSync merupakan platform edukasi yang digunakan untuk membantu pengguna dalam memetakan kompetensi, skill, dan career path. 
 
 Aplikasi ini dibuat sebagai bagian dari studi kasus pada mata kuliah Pemrograman Web, Manajemen Proyek Sistem Informasi (MPSI), dan E-Business, serta diimplementasikan dalam bentuk website.
+## Informasi Kelompok
+1. SISILIA ROUDHOTUN NABILA        24082010009
+2. ARGA DWI PRASTYO                24082010035
+3. BALQIS SAFIRA                   24082010037
+---
 
-Pada tugas ini, sistem SkillSync dikembangkan dengan menambahkan fitur Session dan Cookies untuk mengelola proses login pengguna.
+## Pembagian Tugas
+1. SISILIA ROUDHOTUN NABILA:
+2. ARGA DWI PRASTYO:     
+3. BALQIS SAFIRA:               
+
 
 ---
 
-## Fitur Sistem
-Fitur yang terdapat pada website SkillSync:
-- Login User
-- Logout
-- Session Login
-- Cookies (Remember Me)
-- Session Timeout (Auto Logout)
-- Koneksi Database 
+## Deskripsi Aplikasi
+
+SkillSync adalah aplikasi berbasis web yang dirancang untuk membantu mahasiswa dalam memetakan kompetensi yang dimiliki serta memberikan gambaran awal mengenai arah pengembangan karier yang sesuai. Aplikasi ini memungkinkan pengguna untuk mengelola data keterampilan dan mendapatkan informasi yang relevan dengan potensi karier mereka.
+
+##Tujuan Aplikasi
+- Membantu mahasiswa mengenali kompetensi yang dimiliki.
+- Menyediakan peta kompetensi sebagai dasar pengembangan karier.
+- Mendukung proses perencanaan karier yang lebih terarah.
 
 ---
 
-## Implementasi Session
-Session digunakan untuk menyimpan data login pengguna di server sehingga pengguna tetap dalam kondisi login selama session masih aktif.
+## Fitur Utama
 
-Session digunakan pada:
-- Menyimpan ID User
-- Menyimpan Nama User
-- Menjaga status login
-- Session timeout (logout otomatis)
+1. Autentikasi Pengguna
+  - Login dan logout pengguna.
+  - Manajemen sesi untuk keamanan akses.
+2. Dashboard Mahasiswa
+  - Tampilan halaman utama setelah login.
+  - Menyajikan informasi singkat mengenai aplikasi.
+3. Pemetaan Kompetensi
+  - Pengguna dapat melihat dan mengelola daftar keterampilan yang dimiliki.
+4. Manajemen Database
+  - Penyimpanan data pengguna dan kompetensi menggunakan MySQL.
+5. Antarmuka Responsif
+  - Desain modern dan responsif menggunakan Tailwind CSS.
 
-Contoh penggunaan session pada kode:
-```php
-session_start();
-$_SESSION['id_user'] = $data['id_user'];
-$_SESSION['nama'] = $data['nama'];
-```
-## Implementasi Cookies
-Cookies digunakan pada fitur **Remember Me** saat login. 
-Jika pengguna mencentang Remember Me, maka email pengguna akan disimpan pada browser selama beberapa waktu sehingga pengguna tidak perlu menginput email kembali saat login.
+---
 
-Implementasi cookies terdapat pada file:
-- login.php
+## Tech Stack
 
-Contoh kode implementasi cookies pada login.php:
-```php
-if (isset($_POST['remember'])) {
-    setcookie("email_user", $email, time() + (86400 * 7), "/");
-}
-```
-## Perbedaan Session dan Cookies
+Frontend: HTML5, Tailwind CSS
+Backend: PHP 
+Database: MySQL 
+Web Server: Apache (XAMPP) 
+Version Control: Git & GitHub 
+Design Tools: Figma 
 
-| Session | Cookies |
-|--------|--------|
-| Disimpan di Server | Disimpan di Browser |
-| Untuk menyimpan data login | Untuk remember me |
-| Lebih aman | Kurang aman |
-| Mengatur hak akses | Menyimpan data sementara |
+---
