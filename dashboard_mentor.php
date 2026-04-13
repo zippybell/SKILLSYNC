@@ -182,8 +182,15 @@ $q_materi_list = mysqli_query($koneksi, "
             </div>
 
             <div class="flex gap-2">
-                <a href="#" class="border px-3 py-1 rounded text-blue-500">Edit</a>
-                <a href="#" class="border px-3 py-1 rounded text-red-500">Hapus</a>
+                <a href="edit_materi.php?id=<?= $m['id']; ?>" 
+                class="border px-3 py-1 rounded text-blue-500">
+                Edit
+                </a>
+
+                <button onclick="hapusData(<?= $m['id']; ?>)" 
+                class="px-3 py-1 border border-red-400 text-red-500 rounded hover:bg-red-50">
+                Hapus
+                </button>
             </div>
 
         </div>
@@ -204,6 +211,12 @@ $q_materi_list = mysqli_query($koneksi, "
 <script>
     lucide.createIcons();
 </script>
-
+<script>
+function hapusData(id){
+    if(confirm("Yakin mau hapus materi ini?")){
+        window.location.href = "hapus_materi.php?id=" + id;
+    }
+}
+</script>
 </body>
 </html>
