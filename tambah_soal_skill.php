@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'koneksi.php';
 $skill = mysqli_query($koneksi, "SELECT * FROM skills");
 ?>
