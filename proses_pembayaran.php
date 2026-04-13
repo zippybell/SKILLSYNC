@@ -16,10 +16,6 @@ $data = mysqli_fetch_assoc($query);
 
 $hasil_id = $data['id_hasil'];
 
-// =======================
-// CEK JENIS PEMBAYARAN
-// =======================
-
 // 1. BAYAR PER HASIL
 if($paket == "Bayar Per Hasil"){
 

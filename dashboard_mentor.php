@@ -18,9 +18,7 @@ include 'koneksi.php';
 
 $user_id = $_SESSION['user_id'];
 
-// =======================
 // DATA RINGKASAN
-// =======================
 
 // pending (sementara 0)
 $d_pending = ['total' => 0];
@@ -33,14 +31,10 @@ $d_materi = mysqli_fetch_assoc($q_materi);
 $q_views = mysqli_query($koneksi, "SELECT SUM(views) as total FROM upload_mentor WHERE mentor_id='$user_id'");
 $d_views = mysqli_fetch_assoc($q_views);
 
-// =======================
-// DATA VALIDASI (dummy kosong)
-// =======================
+// DATA VALIDASI 
 $data_validasi = [];
 
-// =======================
 // DATA MATERI
-// =======================
 $q_materi_list = mysqli_query($koneksi, "
     SELECT * FROM upload_mentor 
     WHERE mentor_id='$user_id'
@@ -73,9 +67,8 @@ $q_materi_list = mysqli_query($koneksi, "
 
 <div class="p-6 max-w-7xl mx-auto">
 
-<!-- ===================== -->
+
 <!-- SUMMARY -->
-<!-- ===================== -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
     <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
@@ -110,9 +103,7 @@ $q_materi_list = mysqli_query($koneksi, "
 
 </div>
 
-<!-- ===================== -->
 <!-- VALIDASI -->
-<!-- ===================== -->
 <h2 class="font-semibold text-lg mb-3 flex items-center gap-2 text-blue-500">
     <i data-lucide="award"></i> Validasi Tes Kompetensi
 </h2>
@@ -146,9 +137,7 @@ $q_materi_list = mysqli_query($koneksi, "
 <?php } ?>
 
 
-<!-- ===================== -->
 <!-- UPLOAD -->
-<!-- ===================== -->
 <div class="flex justify-between items-center mt-8 mb-4">
     <h2 class="font-semibold text-lg flex items-center gap-2 text-blue-500">
         <i data-lucide="upload"></i> Upload Materi Pembelajaran
@@ -159,10 +148,7 @@ $q_materi_list = mysqli_query($koneksi, "
     </a>
 </div>
 
-
-<!-- ===================== -->
 <!-- LIST MATERI -->
-<!-- ===================== -->
 <h2 class="font-semibold text-lg mb-3 flex items-center gap-2 text-blue-500">
     <i data-lucide="file-text"></i> Materi yang Sudah Diupload
 </h2>

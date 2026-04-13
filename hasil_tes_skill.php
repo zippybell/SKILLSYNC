@@ -20,9 +20,7 @@ if(!$data){
     exit;
 }
 
-// ======================
-// 🔥 CEK AKSES USER
-// ======================
+// CEK AKSES USER
 $boleh_lihat = false;
 
 $cek = mysqli_query($koneksi, "SELECT * FROM akses_user WHERE user_id='$user_id'");
@@ -161,7 +159,7 @@ $detail = mysqli_query($koneksi, "
                 class="block bg-blue-500 text-white py-2 rounded-lg">
                 Pilih
             </a>
-        </div> <!-- ✅ INI YANG TADI KURANG -->
+        </div> 
 
         <!-- PREMIUM -->
         <div class="border-2 border-yellow-400 bg-yellow-50 rounded-xl p-6 relative">
@@ -188,7 +186,7 @@ $detail = mysqli_query($koneksi, "
 
     </div>
 
-    <!-- FEATURE -->
+    <!-- FITURE -->
     <div class="bg-yellow-50 p-6 rounded-xl text-left mb-6">
         <h3 class="text-yellow-700 font-semibold mb-4 text-lg">
             👑 Premium Features

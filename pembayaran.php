@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-// ambil data dari URL (biar dinamis)
 $paket = $_GET['paket'] ?? 'Bayar Per Hasil';
 $harga = $_GET['harga'] ?? 25000;
 
-// bikin nomor pesanan random
+// bikin nomor pesanan
 $order_id = "SS" . rand(10000000,99999999);
 ?>
 
@@ -18,7 +17,7 @@ $order_id = "SS" . rand(10000000,99999999);
 
 <body class="bg-blue-50 min-h-screen">
 
-<!-- NAVBAR -->
+<!--navbar -->
 <div class="bg-white px-6 py-4 shadow flex justify-between items-center">
     <h1 class="text-blue-600 font-semibold text-lg">SkillSync</h1>
     <a href="javascript:history.back()" class="text-blue-500">← Kembali</a>
@@ -26,13 +25,13 @@ $order_id = "SS" . rand(10000000,99999999);
 
 <div class="max-w-3xl mx-auto p-6">
 
-    <!-- TIMER -->
+    <!-- timer -->
     <div class="bg-blue-100 text-blue-700 p-4 rounded-lg flex justify-between items-center mb-6">
         <span>⏱️ Selesaikan pembayaran dalam:</span>
         <span id="timer" class="font-semibold">15:00</span>
     </div>
 
-    <!-- QR -->
+    <!-- code qr -->
     <div class="bg-white p-6 rounded-xl shadow text-center mb-6">
 
         <h2 class="text-xl font-semibold text-blue-700 mb-2">
@@ -43,7 +42,6 @@ $order_id = "SS" . rand(10000000,99999999);
             Gunakan aplikasi pembayaran yang mendukung QRIS
         </p>
 
-        <!-- QR DUMMY -->
         <div class="w-48 h-48 mx-auto border-4 border-blue-400 rounded-xl flex items-center justify-center text-4xl">
             ⬛
         </div>
@@ -52,7 +50,7 @@ $order_id = "SS" . rand(10000000,99999999);
             ⬇️ Download QR
         </button>
 
-        <!-- APP -->
+        <!-- metode pembayaran -->
         <div class="mt-6 bg-blue-50 p-4 rounded-lg">
             <p class="text-sm text-blue-700 mb-2">Aplikasi yang Mendukung QRIS:</p>
 
@@ -66,7 +64,7 @@ $order_id = "SS" . rand(10000000,99999999);
         </div>
     </div>
 
-    <!-- CARA BAYAR -->
+    <!-- bayar -->
     <div class="bg-white p-6 rounded-xl shadow mb-6">
 
         <h3 class="text-blue-700 font-semibold mb-4">📱 Cara Pembayaran</h3>
@@ -115,7 +113,7 @@ $order_id = "SS" . rand(10000000,99999999);
             <span>Rp <?= number_format($harga) ?></span>
         </div>
 
-        <!-- BUTTON -->
+        
         <a href="proses_pembayaran.php?skill_id=<?= $_GET['skill_id'] ?>&paket=<?= $paket ?>" 
             class="block mt-6 bg-blue-500 text-white py-3 text-center rounded-lg">
             ✔️ Sudah Bayar
@@ -141,7 +139,6 @@ $order_id = "SS" . rand(10000000,99999999);
 
 <!-- SCRIPT -->
 <script>
-// TIMER 15 MENIT
 let time = 900;
 
 setInterval(() => {

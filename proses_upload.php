@@ -11,7 +11,7 @@ $file_name = $_FILES['file']['name'];
 $tmp       = $_FILES['file']['tmp_name'];
 $size      = $_FILES['file']['size'];
 
-// folder tujuan
+// folder
 $folder = "uploads/";
 $path   = $folder . $file_name;
 

@@ -2,7 +2,7 @@
 session_start();
 include 'koneksi.php';
 
-// ambil skill dari URL
+// ambil skill
 if(!isset($_GET['skill_id'])){
     header("Location: pilih_tes_skill.php");
     exit;
@@ -17,12 +17,12 @@ $soal = mysqli_fetch_all($query, MYSQLI_ASSOC);
 $total = count($soal);
 $current = isset($_GET['no']) ? $_GET['no'] : 1;
 
-// kalau tidak ada soal
+//tidak ada soal
 if($total == 0){
     echo "Soal belum tersedia untuk skill ini";
     exit;
 }
-// ================== PROSES JAWABAN ==================
+// jawaban
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     // simpan jawaban ke session
@@ -61,8 +61,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit;
     }
 }
-// ====================================================
-
 
 // ambil soal sekarang
 $data = $soal[$current - 1];
@@ -148,7 +146,7 @@ $progress = ($current / $total) * 100;
             <?php } ?>
         </div>
 
-        <!-- NEXT / SELESAI (FIX DI SINI) -->
+        <!-- next selesai -->
         <?php if($current < $total) { ?>
             <button type="submit" 
                class="px-4 py-2 bg-blue-500 text-white rounded-lg">

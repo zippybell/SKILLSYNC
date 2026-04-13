@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 
 $user_id = $_SESSION['user_id'];
-$skill_id = $_GET['skill_id']; // biar tau mau bayar hasil yg mana
+$skill_id = $_GET['skill_id']; 
 ?>
 
 <!DOCTYPE html>

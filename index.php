@@ -36,69 +36,83 @@ $_SESSION['expired'] = time() + 3600;
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-[#eef5f9] text-gray-800">
 
 <!-- NAVBAR -->
 <nav class="bg-white shadow-sm fixed w-full z-10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-        <div class="flex items-center gap-2">
-            <div class="w-9 h-9 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+        
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
                 S
             </div>
-            <h1 class="text-lg font-semibold text-blue-500">SkillSync</h1>
+            <h1 class="text-xl font-semibold text-blue-500">SkillSync</h1>
         </div>
 
         <div class="space-x-3">
-            <a href="login_form.php" class="border border-blue-400 text-blue-500 px-4 py-1 rounded-lg hover:bg-blue-50">
+            <a href="login_form.php" class="border border-blue-400 text-blue-500 px-5 py-2 rounded-lg hover:bg-blue-50 transition">
                 Login
             </a>
-            <a href="pilih_role.php" class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600">
+            <a href="pilih_role.php" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition">
                 Daftar
             </a>
         </div>
+
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="bg-[#eef5f9] text-center pt-32 pb-16">
-    <h1 class="text-4xl font-semibold text-blue-700 mb-3">
+<section class="text-center pt-36 pb-20">
+    <h1 class="text-4xl font-semibold text-blue-700 mb-4">
         Selamat Datang di SkillSync
     </h1>
-    <p class="text-blue-600">
+    <p class="text-blue-600 text-lg">
         Platform pembelajaran online untuk meningkatkan skill Anda
     </p>
 </section>
 
 <!-- FITUR -->
-<section class="bg-[#eef5f9] pb-20">
+<section class="pb-24">
     <div class="max-w-6xl mx-auto px-6 text-center">
 
-        <h2 class="text-2xl font-semibold text-blue-700 mb-12">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-14">
             Fitur Unggulan
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-10">
 
             <?php
             $fitur = [
-                ["Login & Register","Masuk ke akun untuk akses fitur"],
-                ["Peta Kompetensi","Visualisasi skill kamu"],
-                ["Career Gap","Analisis gap skill"],
-                ["Upload Proyek","Validasi skill"],
-                ["Tes Diagnostik","Cek kemampuan awal"],
-                ["Rekomendasi","Materi belajar personal"]
+                ["👤","Login & Register","Daftar dan masuk ke akun Anda untuk mengakses semua fitur platform"],
+                ["📈","Peta Kompetensi Mahasiswa","Dashboard interaktif untuk memvisualisasikan skill dan kompetensi Anda"],
+                ["🏅","Career Gap Scanner","Analisis kesenjangan antara skill Anda dengan kebutuhan karir impian"],
+                ["📘","Upload Proyek & Validasi Skill","Unggah portofolio proyek dan dapatkan validasi skill dari sistem"],
+                ["📅","Tes Diagnostik Awal","Ikuti tes untuk mengetahui level kemampuan dan skill Anda saat ini"],
+                ["💬","Rekomendasi Materi Pembelajaran","Dapatkan rekomendasi materi belajar yang sesuai dengan kebutuhan Anda"]
             ];
 
             foreach ($fitur as $item) :
             ?>
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-md">
-                    <h3 class="font-semibold text-blue-600 mb-2">
+             <a href="login_form.php">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+
+                    <!-- ICON -->
+                    <div class="w-16 h-16 mx-auto mb-5 bg-blue-100 text-blue-500 flex items-center justify-center rounded-full text-2xl">
                         <?php echo $item[0]; ?>
-                    </h3>
-                    <p class="text-sm text-gray-500">
+                    </div>
+
+                    <!-- TITLE -->
+                    <h3 class="font-semibold text-blue-700 text-lg mb-2">
                         <?php echo $item[1]; ?>
+                    </h3>
+
+                    <!-- DESC -->
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        <?php echo $item[2]; ?>
                     </p>
+
                 </div>
+                  </a>
             <?php endforeach; ?>
 
         </div>
@@ -106,8 +120,11 @@ $_SESSION['expired'] = time() + 3600;
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-white text-center py-10 text-blue-400 border-t">
-    <p>© 2026 SkillSync</p>
+<footer class="bg-white text-center py-12 text-blue-500 border-t">
+    <p class="mb-2 font-medium">Hubungi Kami</p>
+    <p class="text-sm">Email: info@skillsync.com</p>
+    <p class="text-sm mb-4">Telepon: +62 812-3456-7890</p>
+    <p class="text-xs text-blue-400">© 2026 SkillSync. Platform pembelajaran untuk masa depan Anda.</p>
 </footer>
 
 </body>
