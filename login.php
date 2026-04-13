@@ -2,33 +2,34 @@
 session_start();
 include 'koneksi.php';
 
-// pastikan request dari form
+// ================== VALIDASI REQUEST ==================
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // ambil data user berdasarkan email
+    // ================== AMBIL DATA USER ==================
     $query = mysqli_query($koneksi, "SELECT * FROM users WHERE email='$email'");
     $data = mysqli_fetch_assoc($query);
 
     if ($data) {
 
-        // cek password (sementara masih plain text)
+        // ================== CEK PASSWORD ==================
+        // (sementara masih plain text)
         if ($password == $data['password']) {
 
-            // set session
+            // ================== SET SESSION ==================
             $_SESSION['user_id'] = $data['id_user'];
             $_SESSION['nama'] = $data['nama'];
             $_SESSION['role'] = $data['role'];
             $_SESSION['expired'] = time() + 3600; // 1 jam
 
-            // remember me
+            // ================== REMEMBER ME ==================
             if (isset($_POST['remember'])) {
                 setcookie("email_user", $email, time() + (86400 * 7), "/");
             }
 
-            // 🔥 redirect berdasarkan role
+            // ================== REDIRECT ROLE ==================
             switch ($data['role']) {
 
                 case 'admin':

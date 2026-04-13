@@ -1,18 +1,21 @@
 <?php
 session_start();
 
+// CEK LOGIN
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
     exit;
 }
 
+// CEK EXPIRED
 if(time() > $_SESSION['expired']){
     session_destroy();
     header("Location: login.php");
     exit;
 }
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+// CEK ROLE ADMIN
+if ($_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit;
 }
@@ -46,16 +49,39 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     <div class="grid md:grid-cols-2 gap-6">
 
         <!-- SOAL KEPRIBADIAN -->
-<div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-    <h3 class="text-lg font-semibold mb-2">Soal Kepribadian</h3>
-    <p class="text-gray-600 mb-4">
-        Tambah, edit, dan hapus soal tes kepribadian.
-    </p>
-    <a href="admin_soal_kepribadian.php" class="bg-yellow-500 text-white px-4 py-2 rounded">
-        Kelola Soal
-    </a>
-</div>
-        <!-- DATA USER -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold mb-2">Soal Kepribadian</h3>
+            <p class="text-gray-600 mb-4">
+                Tambah, edit, dan hapus soal tes kepribadian.
+            </p>
+            <a href="admin_soal_kepribadian.php" class="bg-yellow-500 text-white px-4 py-2 rounded">
+                Kelola Soal
+            </a>
+        </div>
+
+        <!-- SOAL KOMPETENSI -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold mb-2">Soal Kompetensi</h3>
+            <p class="text-gray-600 mb-4">
+                Kelola soal tes skill kompetensi
+            </p>
+            <a href="admin_soal_skill.php" class="bg-blue-600 text-white px-4 py-2 rounded">
+                Kelola Soal
+            </a>
+        </div>
+
+        <!-- MANAJEMEN SKILL -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold mb-2">Manajemen Skill</h3>
+            <p class="text-gray-600 mb-4">
+                Tambah, edit, dan hapus data skill.
+            </p>
+            <a href="skill.php" class="bg-indigo-600 text-white px-4 py-2 rounded">
+                Kelola Skill
+            </a>
+        </div>
+
+        <!-- MANAJEMEN USER -->
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
             <h3 class="text-lg font-semibold mb-2">Manajemen User</h3>
             <p class="text-gray-600 mb-4">
@@ -66,28 +92,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             </a>
         </div>
 
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-    <h3 class="text-lg font-semibold mb-2">Soal Kompetensi</h3>
-    <p class="text-gray-600 mb-4">
-        Kelola soal tes skill kompetensi
-    </p>
-    <a href="admin_soal_skill.php" class="bg-blue-600 text-white px-4 py-2 rounded">
-        Kelola Soal
-    </a>
-</div>
-
-        <!-- CRUD SKILL -->
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-            <h3 class="text-lg font-semibold mb-2">Manajemen Skill</h3>
-            <p class="text-gray-600 mb-4">
-                Tambah, edit, dan hapus data skill.
-            </p>
-            <a href="skill.php" class="bg-blue-600 text-white px-4 py-2 rounded">
-                Kelola Skill
-            </a>
-        </div>
-
-        <!-- DATA HASIL TES -->
+        <!-- HASIL TES -->
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
             <h3 class="text-lg font-semibold mb-2">Hasil Tes</h3>
             <p class="text-gray-600 mb-4">
@@ -104,7 +109,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             <p class="text-gray-600 mb-4">
                 Melihat proyek yang diupload mahasiswa.
             </p>
-            <a href="proyek_admin.php" class="bg-indigo-600 text-white px-4 py-2 rounded">
+            <a href="proyek_admin.php" class="bg-pink-500 text-white px-4 py-2 rounded">
                 Lihat Proyek
             </a>
         </div>
