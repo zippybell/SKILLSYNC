@@ -29,17 +29,17 @@ if ($_SESSION['role'] != 'admin') {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-blue-50">
 
 <!-- NAVBAR -->
-<nav class="bg-blue-600 text-white p-4 flex justify-between">
-    <h1 class="text-xl font-bold">Admin SkillSync</h1>
-
+<div class="bg-white shadow px-6 py-4 flex justify-between">
+    
+    <h1 class="text-xl font-bold text-blue-600">SkillSync</h1>
     <div>
-        <span class="mr-4">Halo, <?php echo $_SESSION['nama']; ?></span>
-        <a href="logout.php" class="bg-red-500 px-3 py-1 rounded">Logout</a>
+        Halo, Mahasiswa
+        <a href="logout.php" class="ml-4 bg-blue-500 text-white px-3 py-1 rounded">Logout</a>
     </div>
-</nav>
+</div>
 
 <!-- CONTENT -->
 <div class="max-w-5xl mx-auto mt-10 px-6">

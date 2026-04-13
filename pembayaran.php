@@ -115,15 +115,16 @@ $order_id = "SS" . rand(10000000,99999999);
 
         
         <a href="proses_pembayaran.php?skill_id=<?= $_GET['skill_id'] ?>&paket=<?= $paket ?>" 
-            class="block mt-6 bg-blue-500 text-white py-3 text-center rounded-lg">
-            ✔️ Sudah Bayar
-        </a>
+        class="block mt-6 bg-blue-500 text-white py-3 text-center rounded-lg"> 
+        ✔️ Sudah Bayar 
+        </a> 
 
-        <p class="text-xs text-center text-blue-400 mt-2">
-            Klik tombol ini setelah Anda menyelesaikan pembayaran
-        </p>
+        <p class="text-xs text-center text-blue-400 mt-2"> 
 
+            Klik tombol ini setelah Anda menyelesaikan pembayaran 
+        </p> 
     </div>
+    
 
     <!-- WARNING -->
     <div class="bg-yellow-50 border border-yellow-300 p-4 rounded-lg text-sm text-yellow-700">

@@ -219,18 +219,23 @@ $data = mysqli_fetch_assoc($query);
     </div>
 </div>
 <!-- PREMIUM -->
-<div class="p-6">
-    <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
-        <div>
-            <h3 class="font-semibold">Paket Premium</h3>
-            <p class="text-sm text-gray-500">Akses unlimited semua fitur</p>
-        </div>
-        <div class="text-right">
-            <p class="text-sm">Rp 25.000 / hasil</p>
-            <p class="text-sm">Rp 99.000 / bulan</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Upgrade</button>
-        </div>
+<div class="bg-white rounded-xl shadow p-6 flex justify-between items-end">
+    
+    <div>
+        <h3 class="font-semibold text-gray-800">Paket Premium</h3>
+        <p class="text-sm text-gray-500">Akses unlimited semua fitur</p>
     </div>
+
+    <div class="text-right">
+        <p class="text-sm text-gray-700">Rp 25.000 / hasil</p>
+        <p class="text-sm text-gray-700 mb-2">Rp 99.000 / bulan</p>
+
+        <a href="pilih_paket.php" class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600">
+            Upgrade
+        </a>
+    </div>
+
+</div>
 </div>
 
 </body>
